@@ -1,0 +1,24 @@
+app = "ghost"
+
+[build]
+runtime = "docker"
+
+[deploy]
+start_command = "node current/index.js"
+
+[http]
+port = 2368
+health_check_path = "/ghost/api/admin/site/"
+
+[env]
+NODE_ENV = "production"
+database__client = "mysql"
+database__connection__host = "mysql"
+database__connection__port = "3306"
+database__connection__user = "ghost"
+database__connection__password = "${{secrets.MYSQL_PASSWORD}}"
+database__connection__database = "ghost"
+
+[vm]
+package = "g1.small"
+instances = 1

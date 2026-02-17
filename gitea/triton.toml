@@ -1,0 +1,25 @@
+app = "gitea"
+
+[build]
+runtime = "docker"
+
+[deploy]
+start_command = "/usr/bin/entrypoint"
+
+[http]
+port = 3000
+health_check_path = "/api/healthz"
+
+[env]
+GITEA__database__DB_TYPE = "postgres"
+GITEA__database__HOST = "postgres:5432"
+GITEA__database__NAME = "gitea"
+GITEA__database__USER = "postgres"
+GITEA__database__PASSWD = "${{secrets.PGPASSWORD}}"
+GITEA__server__ROOT_URL = "http://localhost:3000"
+GITEA__server__SSH_DOMAIN = "localhost"
+GITEA__server__SSH_PORT = "22"
+
+[vm]
+package = "g1.small"
+instances = 1

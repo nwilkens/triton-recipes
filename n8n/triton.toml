@@ -1,0 +1,26 @@
+app = "n8n"
+
+[build]
+runtime = "docker"
+
+[deploy]
+start_command = "n8n start"
+
+[http]
+port = 5678
+health_check_path = "/healthz"
+
+[env]
+DB_TYPE = "postgresdb"
+DB_POSTGRESDB_HOST = "postgres"
+DB_POSTGRESDB_PORT = "5432"
+DB_POSTGRESDB_DATABASE = "n8n"
+DB_POSTGRESDB_USER = "postgres"
+DB_POSTGRESDB_PASSWORD = "${{secrets.PGPASSWORD}}"
+N8N_PORT = "5678"
+N8N_PROTOCOL = "http"
+GENERIC_TIMEZONE = "UTC"
+
+[vm]
+package = "g1.small"
+instances = 1
