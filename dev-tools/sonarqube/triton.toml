@@ -1,0 +1,18 @@
+app = "sonarqube"
+
+[build]
+runtime = "docker"
+image = "sonarqube:community"
+
+[http]
+port = 9000
+health_check_path = "/api/system/status"
+
+[env]
+SONAR_JDBC_URL = "jdbc:postgresql://postgres:5432/sonarqube"
+SONAR_JDBC_USERNAME = "postgres"
+SONAR_JDBC_PASSWORD = "${{secrets.PGPASSWORD}}"
+
+[vm]
+package = "g1.medium"
+instances = 1

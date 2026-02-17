@@ -1,0 +1,17 @@
+app = "traggo"
+
+[build]
+runtime = "docker"
+image = "traggo/server:latest"
+
+[http]
+port = 3030
+health_check_path = "/"
+
+[env]
+TRAGGO_DEFAULT_USER_NAME = "admin"
+TRAGGO_DEFAULT_USER_PASS = "${{secrets.ADMIN_PASSWORD}}"
+
+[vm]
+package = "g1.xsmall"
+instances = 1

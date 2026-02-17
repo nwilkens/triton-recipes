@@ -1,0 +1,19 @@
+app = "woodpecker-ci"
+
+[build]
+runtime = "docker"
+image = "woodpeckerci/woodpecker-server:latest"
+
+[http]
+port = 8000
+health_check_path = "/healthz"
+
+[env]
+WOODPECKER_DATABASE_DRIVER = "postgres"
+WOODPECKER_DATABASE_DATASOURCE = "postgres://postgres:${{secrets.PGPASSWORD}}@postgres:5432/woodpecker?sslmode=disable"
+WOODPECKER_HOST = "http://localhost:8000"
+WOODPECKER_AGENT_SECRET = "${{secrets.AGENT_SECRET}}"
+
+[vm]
+package = "g1.small"
+instances = 1

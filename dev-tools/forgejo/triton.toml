@@ -1,0 +1,21 @@
+app = "forgejo"
+
+[build]
+runtime = "docker"
+image = "codeberg.org/forgejo/forgejo:9"
+
+[http]
+port = 3000
+health_check_path = "/api/healthz"
+
+[env]
+FORGEJO__database__DB_TYPE = "postgres"
+FORGEJO__database__HOST = "postgres:5432"
+FORGEJO__database__NAME = "forgejo"
+FORGEJO__database__USER = "postgres"
+FORGEJO__database__PASSWD = "${{secrets.PGPASSWORD}}"
+FORGEJO__server__ROOT_URL = "http://localhost:3000"
+
+[vm]
+package = "g1.small"
+instances = 1

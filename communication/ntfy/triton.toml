@@ -1,0 +1,17 @@
+app = "ntfy"
+
+[build]
+runtime = "docker"
+image = "binwiederhier/ntfy:latest"
+
+[http]
+port = 80
+health_check_path = "/v1/health"
+
+[env]
+NTFY_BASE_URL = "http://localhost"
+NTFY_UPSTREAM_BASE_URL = "https://ntfy.sh"
+
+[vm]
+package = "g1.xsmall"
+instances = 1

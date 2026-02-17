@@ -1,0 +1,18 @@
+app = "payload-cms"
+
+[build]
+runtime = "docker"
+image = "node:22-slim"
+
+[http]
+port = 3000
+health_check_path = "/"
+
+[env]
+MONGODB_URI = "mongodb://mongo:27017/payload"
+PAYLOAD_SECRET = "${{secrets.PAYLOAD_SECRET}}"
+NODE_ENV = "production"
+
+[vm]
+package = "g1.small"
+instances = 1

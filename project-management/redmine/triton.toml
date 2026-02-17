@@ -1,0 +1,20 @@
+app = "redmine"
+
+[build]
+runtime = "docker"
+image = "redmine:5"
+
+[http]
+port = 3000
+health_check_path = "/"
+
+[env]
+REDMINE_DB_POSTGRES = "postgres"
+REDMINE_DB_PORT = "5432"
+REDMINE_DB_DATABASE = "redmine"
+REDMINE_DB_USERNAME = "postgres"
+REDMINE_DB_PASSWORD = "${{secrets.PGPASSWORD}}"
+
+[vm]
+package = "g1.small"
+instances = 1

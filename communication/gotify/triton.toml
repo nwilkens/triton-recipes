@@ -1,0 +1,17 @@
+app = "gotify"
+
+[build]
+runtime = "docker"
+image = "gotify/server:latest"
+
+[http]
+port = 80
+health_check_path = "/health"
+
+[env]
+GOTIFY_DEFAULTUSER_NAME = "admin"
+GOTIFY_DEFAULTUSER_PASS = "${{secrets.ADMIN_PASSWORD}}"
+
+[vm]
+package = "g1.xsmall"
+instances = 1

@@ -1,0 +1,16 @@
+app = "jaeger"
+
+[build]
+runtime = "docker"
+image = "jaegertracing/all-in-one:latest"
+
+[http]
+port = 16686
+health_check_path = "/"
+
+[env]
+COLLECTOR_OTLP_ENABLED = "true"
+
+[vm]
+package = "g1.small"
+instances = 1

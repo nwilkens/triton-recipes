@@ -1,0 +1,23 @@
+app = "harbor"
+
+[build]
+runtime = "docker"
+image = "goharbor/harbor-core:latest"
+
+[http]
+port = 80
+health_check_path = "/api/v2.0/ping"
+
+[env]
+DATABASE_TYPE = "postgresql"
+POSTGRESQL_HOST = "postgres"
+POSTGRESQL_PORT = "5432"
+POSTGRESQL_DATABASE = "harbor"
+POSTGRESQL_USERNAME = "postgres"
+POSTGRESQL_PASSWORD = "${{secrets.PGPASSWORD}}"
+REDIS_URL = "redis://redis:6379/0"
+HARBOR_ADMIN_PASSWORD = "${{secrets.ADMIN_PASSWORD}}"
+
+[vm]
+package = "g1.medium"
+instances = 1

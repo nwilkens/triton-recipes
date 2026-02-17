@@ -1,0 +1,16 @@
+app = "hugo"
+
+[build]
+runtime = "docker"
+image = "klakegg/hugo:ext-alpine"
+
+[http]
+port = 1313
+health_check_path = "/"
+
+[env]
+HUGO_ENV = "production"
+
+[vm]
+package = "g1.xsmall"
+instances = 1

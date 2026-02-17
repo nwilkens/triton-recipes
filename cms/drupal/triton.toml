@@ -1,0 +1,21 @@
+app = "drupal"
+
+[build]
+runtime = "docker"
+image = "drupal:11-php8.3"
+
+[http]
+port = 80
+health_check_path = "/"
+
+[env]
+DRUPAL_DB_DRIVER = "mysql"
+DRUPAL_DB_HOST = "mysql"
+DRUPAL_DB_PORT = "3306"
+DRUPAL_DB_NAME = "drupal"
+DRUPAL_DB_USER = "drupal"
+DRUPAL_DB_PASSWORD = "${{secrets.MYSQL_PASSWORD}}"
+
+[vm]
+package = "g1.small"
+instances = 1

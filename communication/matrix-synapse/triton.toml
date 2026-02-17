@@ -1,0 +1,22 @@
+app = "matrix-synapse"
+
+[build]
+runtime = "docker"
+image = "matrixdotorg/synapse:latest"
+
+[http]
+port = 8008
+health_check_path = "/health"
+
+[env]
+SYNAPSE_SERVER_NAME = "localhost"
+SYNAPSE_REPORT_STATS = "no"
+POSTGRES_HOST = "postgres"
+POSTGRES_PORT = "5432"
+POSTGRES_DB = "synapse"
+POSTGRES_USER = "postgres"
+POSTGRES_PASSWORD = "${{secrets.PGPASSWORD}}"
+
+[vm]
+package = "g1.small"
+instances = 1

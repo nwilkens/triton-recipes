@@ -1,0 +1,21 @@
+app = "taiga"
+
+[build]
+runtime = "docker"
+image = "taigaio/taiga-back:latest"
+
+[http]
+port = 9000
+health_check_path = "/api/v1"
+
+[env]
+POSTGRES_HOST = "postgres"
+POSTGRES_DB = "taiga"
+POSTGRES_USER = "postgres"
+POSTGRES_PASSWORD = "${{secrets.PGPASSWORD}}"
+TAIGA_SECRET_KEY = "${{secrets.SECRET_KEY}}"
+RABBITMQ_URL = "redis://redis:6379/0"
+
+[vm]
+package = "g1.small"
+instances = 1

@@ -1,0 +1,20 @@
+app = "drone-ci"
+
+[build]
+runtime = "docker"
+image = "drone/drone:2"
+
+[http]
+port = 80
+health_check_path = "/healthz"
+
+[env]
+DRONE_DATABASE_DRIVER = "postgres"
+DRONE_DATABASE_DATASOURCE = "postgres://postgres:${{secrets.PGPASSWORD}}@postgres:5432/drone?sslmode=disable"
+DRONE_SERVER_HOST = "localhost"
+DRONE_SERVER_PROTO = "http"
+DRONE_RPC_SECRET = "${{secrets.DRONE_RPC_SECRET}}"
+
+[vm]
+package = "g1.small"
+instances = 1

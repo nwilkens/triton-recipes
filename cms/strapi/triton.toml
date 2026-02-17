@@ -1,0 +1,22 @@
+app = "strapi"
+
+[build]
+runtime = "docker"
+image = "strapi/strapi:latest"
+
+[http]
+port = 1337
+health_check_path = "/_health"
+
+[env]
+DATABASE_CLIENT = "postgres"
+DATABASE_HOST = "postgres"
+DATABASE_PORT = "5432"
+DATABASE_NAME = "strapi"
+DATABASE_USERNAME = "postgres"
+DATABASE_PASSWORD = "${{secrets.PGPASSWORD}}"
+NODE_ENV = "production"
+
+[vm]
+package = "g1.small"
+instances = 1

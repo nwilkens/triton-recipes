@@ -1,0 +1,22 @@
+app = "sentry"
+
+[build]
+runtime = "docker"
+image = "getsentry/sentry:latest"
+
+[http]
+port = 9000
+health_check_path = "/_health/"
+
+[env]
+SENTRY_POSTGRES_HOST = "postgres"
+SENTRY_POSTGRES_PORT = "5432"
+SENTRY_DB_NAME = "sentry"
+SENTRY_DB_USER = "postgres"
+SENTRY_DB_PASSWORD = "${{secrets.PGPASSWORD}}"
+SENTRY_REDIS_HOST = "redis"
+SENTRY_SECRET_KEY = "${{secrets.SECRET_KEY}}"
+
+[vm]
+package = "g1.medium"
+instances = 1

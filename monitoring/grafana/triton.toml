@@ -1,0 +1,21 @@
+app = "grafana"
+
+[build]
+runtime = "docker"
+image = "grafana/grafana:latest"
+
+[http]
+port = 3000
+health_check_path = "/api/health"
+
+[env]
+GF_DATABASE_TYPE = "postgres"
+GF_DATABASE_HOST = "postgres:5432"
+GF_DATABASE_NAME = "grafana"
+GF_DATABASE_USER = "postgres"
+GF_DATABASE_PASSWORD = "${{secrets.PGPASSWORD}}"
+GF_SECURITY_ADMIN_PASSWORD = "${{secrets.ADMIN_PASSWORD}}"
+
+[vm]
+package = "g1.small"
+instances = 1

@@ -1,0 +1,18 @@
+app = "mattermost"
+
+[build]
+runtime = "docker"
+image = "mattermost/mattermost-team-edition:latest"
+
+[http]
+port = 8065
+health_check_path = "/api/v4/system/ping"
+
+[env]
+MM_SQLSETTINGS_DRIVERNAME = "postgres"
+MM_SQLSETTINGS_DATASOURCE = "postgres://postgres:${{secrets.PGPASSWORD}}@postgres:5432/mattermost?sslmode=disable"
+MM_SERVICESETTINGS_SITEURL = "http://localhost:8065"
+
+[vm]
+package = "g1.small"
+instances = 1

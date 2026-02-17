@@ -1,0 +1,18 @@
+app = "plane"
+
+[build]
+runtime = "docker"
+image = "makeplane/plane-frontend:latest"
+
+[http]
+port = 3000
+health_check_path = "/"
+
+[env]
+DATABASE_URL = "postgres://postgres:${{secrets.PGPASSWORD}}@postgres:5432/plane"
+REDIS_URL = "redis://redis:6379"
+SECRET_KEY = "${{secrets.SECRET_KEY}}"
+
+[vm]
+package = "g1.small"
+instances = 1

@@ -1,0 +1,16 @@
+app = "prometheus"
+
+[build]
+runtime = "docker"
+image = "prom/prometheus:latest"
+
+[http]
+port = 9090
+health_check_path = "/-/healthy"
+
+[env]
+PROMETHEUS_RETENTION_TIME = "15d"
+
+[vm]
+package = "g1.small"
+instances = 1

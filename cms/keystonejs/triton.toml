@@ -1,0 +1,17 @@
+app = "keystonejs"
+
+[build]
+runtime = "docker"
+image = "node:22-slim"
+
+[http]
+port = 3000
+health_check_path = "/"
+
+[env]
+DATABASE_URL = "postgres://postgres:${{secrets.PGPASSWORD}}@postgres:5432/keystone"
+NODE_ENV = "production"
+
+[vm]
+package = "g1.small"
+instances = 1

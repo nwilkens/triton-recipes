@@ -1,0 +1,16 @@
+app = "code-server"
+
+[build]
+runtime = "docker"
+image = "codercom/code-server:latest"
+
+[http]
+port = 8080
+health_check_path = "/healthz"
+
+[env]
+PASSWORD = "${{secrets.PASSWORD}}"
+
+[vm]
+package = "g1.small"
+instances = 1

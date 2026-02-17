@@ -1,0 +1,23 @@
+app = "zulip"
+
+[build]
+runtime = "docker"
+image = "zulip/docker-zulip:latest"
+
+[http]
+port = 443
+health_check_path = "/login/"
+
+[env]
+SETTING_EXTERNAL_HOST = "localhost"
+SETTING_ZULIP_ADMINISTRATOR = "admin@example.com"
+DISABLE_HTTPS = "true"
+DB_HOST = "postgres"
+DB_USER = "postgres"
+SECRETS_postgres_password = "${{secrets.PGPASSWORD}}"
+SETTING_MEMCACHED_LOCATION = "redis:11211"
+SETTING_REDIS_HOST = "redis"
+
+[vm]
+package = "g1.medium"
+instances = 1

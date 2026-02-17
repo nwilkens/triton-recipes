@@ -1,0 +1,16 @@
+app = "jenkins"
+
+[build]
+runtime = "docker"
+image = "jenkins/jenkins:lts-jdk21"
+
+[http]
+port = 8080
+health_check_path = "/login"
+
+[env]
+JAVA_OPTS = "-Djenkins.install.runSetupWizard=true"
+
+[vm]
+package = "g1.medium"
+instances = 1

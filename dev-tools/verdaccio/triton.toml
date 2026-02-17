@@ -1,0 +1,16 @@
+app = "verdaccio"
+
+[build]
+runtime = "docker"
+image = "verdaccio/verdaccio:latest"
+
+[http]
+port = 4873
+health_check_path = "/-/ping"
+
+[env]
+VERDACCIO_PORT = "4873"
+
+[vm]
+package = "g1.xsmall"
+instances = 1

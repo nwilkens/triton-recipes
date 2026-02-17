@@ -1,0 +1,21 @@
+app = "vikunja"
+
+[build]
+runtime = "docker"
+image = "vikunja/vikunja:latest"
+
+[http]
+port = 3456
+health_check_path = "/api/v1/info"
+
+[env]
+VIKUNJA_DATABASE_TYPE = "postgres"
+VIKUNJA_DATABASE_HOST = "postgres"
+VIKUNJA_DATABASE_DATABASE = "vikunja"
+VIKUNJA_DATABASE_USER = "postgres"
+VIKUNJA_DATABASE_PASSWORD = "${{secrets.PGPASSWORD}}"
+VIKUNJA_SERVICE_FRONTENDURL = "http://localhost:3456/"
+
+[vm]
+package = "g1.small"
+instances = 1

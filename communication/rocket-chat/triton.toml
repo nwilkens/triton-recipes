@@ -1,0 +1,18 @@
+app = "rocket-chat"
+
+[build]
+runtime = "docker"
+image = "rocket.chat:7"
+
+[http]
+port = 3000
+health_check_path = "/health"
+
+[env]
+MONGO_URL = "mongodb://mongo:27017/rocketchat"
+MONGO_OPLOG_URL = "mongodb://mongo:27017/local"
+ROOT_URL = "http://localhost:3000"
+
+[vm]
+package = "g1.small"
+instances = 1
