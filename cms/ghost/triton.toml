@@ -2,9 +2,7 @@ app = "ghost"
 
 [build]
 runtime = "docker"
-
-[deploy]
-start_command = "node current/index.js"
+image = "ghost:5-alpine"
 
 [http]
 port = 2368

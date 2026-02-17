@@ -2,9 +2,7 @@ app = "gitea"
 
 [build]
 runtime = "docker"
-
-[deploy]
-start_command = "/usr/bin/entrypoint"
+image = "gitea/gitea:1.22-rootless"
 
 [http]
 port = 3000

@@ -2,9 +2,7 @@ app = "n8n"
 
 [build]
 runtime = "docker"
-
-[deploy]
-start_command = "n8n start"
+image = "n8nio/n8n:latest"
 
 [http]
 port = 5678
